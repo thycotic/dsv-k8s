@@ -71,11 +71,14 @@ test_image: image $(BUILD_DIR)/$(NAME).key $(BUILD_DIR)/$(NAME).pem $(BUILD_DIR)
 		--build-arg cert_file="$(BUILD_DIR)/$(NAME).pem" \
 		--build-arg key_file="$(BUILD_DIR)/$(NAME).key" \
 		--build-arg roles_file="$(ROLES_FILE)"
+	
+	docker tag $(TEST_IMAGE_TAG) $(REGISTRY)/$(TEST_IMAGE_TAG)
+	docker push $(REGISTRY)/$(TEST_IMAGE_TAG)
 
 deploy: deploy_webhook test_image
 	sed -e "s| namespace: .*$$| namespace: $(NAMESPACE)|" \
 		-e "s|- port: [0-9]*.*$$|- port: $(SERVICE_PORT)|" \
-		-e "s|image:.*$$|image: $(TEST_IMAGE_TAG)|" \
+		-e "s|image:.*$$|image: $(REGISTRY)/$(TEST_IMAGE_TAG)|" \
 		deployments/pod.yml >| $(BUILD_DIR)/pod.yml
 	kubectl apply -f $(BUILD_DIR)/pod.yml
 
