@@ -21,10 +21,10 @@ jobs:
 
       - name: Build :latest
         if: success()
-        run: docker build --file build/Dockerfile -t registry.hub.docker.com/${{ github.repository }}:latest .
+        run: docker build --file build/Dockerfile -t registry.hub.docker.com/${{ secrets.DOCKER_USERNAME }}/dsv-k8s-test:latest .
         
       - name: Push to docker hub :latest
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push registry.hub.docker.com/${{ github.repository }}:latest
+          args: push registry.hub.docker.com/${{ secrets.DOCKER_USERNAME }}/dsv-k8s-test:latest
