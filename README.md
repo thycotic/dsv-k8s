@@ -1,6 +1,8 @@
-![Publish Docker Image](https://github.com/forced-request/dsv-k8s/workflows/Publish%20Docker%20Image/badge.svg)
-
 # Thycotic DevOps Secrets Vault Kubernetes Secret Injector
+
+![Publish to Docker Hub](https://github.com/forced-request/dsv-k8s/workflows/Publish%20to%20Docker%20Hub/badge.svg)
+
+![Publish to GitHub Package Registry](https://github.com/forced-request/dsv-k8s/workflows/Publish%20to%20GPR/badge.svg)
 
 A [Kubernetes](https://kubernetes.io/) [Mutating Webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks)
 that injects Secret data from Thycotic DevOps Secrets Vault (DSV) into
