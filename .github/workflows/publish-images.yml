@@ -61,7 +61,7 @@ jobs:
 
       - name: Push to Docker Hub :latest
         run: |
-          IMAGE_ID=registry.hub.docker.com/${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME
+          IMAGE_ID=registry.hub.docker.com/amigus/$IMAGE_NAME
           
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
