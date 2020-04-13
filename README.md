@@ -1,3 +1,5 @@
+![Publish Docker Image](https://github.com/forced-request/dsv-k8s/workflows/Publish%20Docker%20Image/badge.svg)
+
 # Thycotic DevOps Secrets Vault Kubernetes Secret Injector
 
 A [Kubernetes](https://kubernetes.io/) [Mutating Webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks)
