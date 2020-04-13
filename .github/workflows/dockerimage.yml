@@ -21,7 +21,7 @@ jobs:
 
       - name: Build :latest
         if: success()
-        run: docker build --file build/Dockerfile -t registry.hub.docker.com/${{ github.repository }}/app:latest .
+        run: docker build --file build/Dockerfile -t registry.hub.docker.com/${{ github.repository }}:latest .
         
       - name: Push to docker hub :latest
         if: success()
