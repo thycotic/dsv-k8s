@@ -27,11 +27,7 @@ jobs:
         run: docker build . --file build/Dockerfile --tag image
 
       - name: Login to Docker Hub
-        uses: actions-hub/docker/login@master
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKER_REGISTRY_URL: registry.hub.docker.com
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login registry.hub.docker.com -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
       - name: Push image to GPR
         run: |
