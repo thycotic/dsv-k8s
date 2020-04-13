@@ -61,10 +61,10 @@ jobs:
 
       - name: Push to Docker Hub :latest
         run: |
-          IMAGE_ID=registry.hub.docker.com/amigus/$IMAGE_NAME
+          DH_IMAGE_ID=registry.hub.docker.com/amigus/$IMAGE_NAME
           
           # Change all uppercase to lowercase
-          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          DH_IMAGE_ID=$(echo $DH_IMAGE_ID | tr '[A-Z]' '[a-z]')
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
@@ -75,9 +75,9 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
 
-          echo IMAGE_ID=$IMAGE_ID
+          echo DH_IMAGE_ID=$DH_IMAGE_ID
           echo VERSION=$VERSION
 
-          docker tag image $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
+          docker tag image $DH_IMAGE_ID:$VERSION
+          docker push $DH_IMAGE_ID:$VERSION
 
